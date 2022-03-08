@@ -87,3 +87,32 @@ export function moveToHomeScreen() {
     }
   })
 }
+
+
+
+export function moveToAuthScreen() {
+  registerScreens();
+  Navigation.setRoot({
+    root: {
+      stack: {
+        id: "Login",
+        children: [
+          {
+            component: {
+              name: "Login"
+            }
+          }
+        ],
+        options: {
+          topBar:
+            {
+              visible: true,
+              backButton: {
+                visible: false
+              }
+            }
+        }
+      }
+    }
+  })
+}

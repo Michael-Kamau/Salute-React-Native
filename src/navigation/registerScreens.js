@@ -6,6 +6,7 @@ import {Navigation} from 'react-native-navigation';
 import Root from "../containers/Root";
 import App from "../../App";
 import Home from "../containers/Home";
+import Login from "../containers/BeforeAuth/Login";
 
 
 export const registerScreens = () => {
@@ -14,6 +15,11 @@ export const registerScreens = () => {
     <Provider store={store}>
       <Root PassedComponent={App} componentProps={props}/>
     </Provider>, () => App);
+
+  Navigation.registerComponent("Login", () => (props) =>
+    <Provider store={store}>
+      <Root PassedComponent={Login} componentProps={props}/>
+    </Provider>, () => Login);
 
   Navigation.registerComponent("Home", () => (props) =>
     <Provider store={store}>
