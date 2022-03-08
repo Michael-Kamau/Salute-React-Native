@@ -13,20 +13,23 @@ import {
   useColorScheme,
   View,
 } from "react-native";
-import { moveToHomeScreen } from "./src/navigation";
+import { moveToAuthScreen, moveToHomeScreen } from "./src/navigation";
 import { Heading, Spinner } from "native-base";
 
 import {theme} from "./src/utils/styles/theme";
 import { SafeAreaProvider } from "react-native-safe-area-context/src/SafeAreaContext";
+import { useSelector } from "react-redux";
 
 
 const App = (props) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const {auth} = useSelector((state) => state)
+
 
   useEffect(() => {
 
     setTimeout(() => {
-      moveToHomeScreen()
+      auth.access_token !== null ? moveToHomeScreen() : moveToAuthScreen()
     }, 3500)
 
   });
